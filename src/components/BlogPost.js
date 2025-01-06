@@ -7,7 +7,7 @@ function BlogPost() {
   const [blog, setBlog] = useState(null);
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/blogs/${id}`)
+    axios.get(`http://localhost:3000/blogs/${id}`)
       .then(response => setBlog(response.data))
       .catch(error => console.error(error));
   }, [id]);

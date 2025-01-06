@@ -5,7 +5,7 @@ function BlogList() {
   const [blogs, setBlogs] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/blogs')
+    axios.get('http://localhost:3000/blogs')
       .then(response => setBlogs(response.data))
       .catch(error => console.error(error));
   }, []);
