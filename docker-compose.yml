@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  user-service:
+    build: ./user-service
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./user-service/.env
+    depends_on:
+      - mongo
+
+  blog-service:
+    build: ./blog-service
+    ports:
+      - "3001:3001"
+    env_file:
+      - ./blog-service/.env
+    depends_on:
+      - mongo
+
+  comment-service:
+    build: ./comment-service
+    ports:
+      - "3002:3002"
+    env_file:
+      - ./comment-service/.env
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:
